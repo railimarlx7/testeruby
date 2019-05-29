@@ -1,20 +1,17 @@
+
 pipeline {
-  agent { docker { image 'ruby:2.4.6' } }
-  stages {
-    stage('requirements') {
-      steps {
-        sh 'gem install bundler'
-      }
+    agent {
+        docker { image 'ruby' }
     }
-    stage('build') {
-      steps {
-        sh 'bundle install'
-      }
+    environment{
+        CI = true
     }
-    stage('test') {
-      steps {
-        sh 'rake'
-      }   
+    stages {
+        stage('Test') {
+            steps {
+                sh 'bundle install'
+            }
+        }
     }
-  }
 }
+

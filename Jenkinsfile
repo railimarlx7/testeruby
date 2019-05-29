@@ -12,6 +12,7 @@ pipeline {
     }
         environment{
         CI = true
+        }
 
     stage('build') {
       steps {

@@ -1,15 +1,15 @@
-pipiline{
-    agent{
-        docker{
-            image 'ruby'
-        }
+pipeline {
+  agent { docker { image 'ruby:2.4.6' } }
+  stages {
+    stage('requirements') {
+      steps {
+        sh 'gem install bundler'
+      }
     }
-    environment{
-        CI = true
+    stage('build') {
+      steps {
+        sh 'bundle install'
+      }
     }
-    stages{
-        stage('bundle'){
-            sh"bundle install"
-        }
-    }
+  }
 }

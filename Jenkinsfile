@@ -1,14 +1,9 @@
 pipeline {
   agent { 
       docker { 
-          image 'ruby:2.4.x' 
+          image 'ruby' 
           } 
     }
-    stages {
-        stage('requirements') {
-      steps {
-        sh 'gem install bundler'
-      }
     }
         environment{
         CI = true
@@ -16,7 +11,7 @@ pipeline {
 
     stage('build') {
       steps {
-        sh 'bundler install'
+        sh 'bundle install'
       }
     }
   }

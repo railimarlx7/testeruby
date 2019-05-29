@@ -4,7 +4,7 @@ pipeline {
           image 'ruby' 
           } 
     }
-    }
+    
         environment{
         CI = true
         }
@@ -14,5 +14,4 @@ pipeline {
         sh 'bundle install'
       }
     }
-  }
-}
+    }
